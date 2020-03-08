@@ -5,6 +5,7 @@
 using namespace std;
 void from_file(string*, ifstream&, ifstream&, int, int);  //считывание из файла
 void fill(string*, string*, long int*, int); //заполнение массивов считанными данными
+void sort(string*, long int*, int); //сортировка по убыванию
 
 
 int main()
@@ -23,6 +24,7 @@ int main()
 	string* name = new string[n];
 	long int* marks = new long int[n];
 	fill(s, name, marks, n);
+	sort(name, marks, n);
 	
 	}
 	else cout << "Файл не открыт";
@@ -61,3 +63,19 @@ void fill(string* s, string* name, long int* marks, int n)
 	}
 }
 
+void sort(string* name, long int* marks, int n)
+{
+	int max; string s;
+	for (int i = 0; i < n - 1; i++)
+	{
+		max = marks[i]; s = name[i];
+		for (int j = i + 1; j < n; j++)
+		{
+			if (max < marks[j]) 
+			{ 
+				max = marks[j]; marks[j] = marks[i]; marks[i] = max;
+				s = name[j]; name[j] = name[i]; name[i] = s;
+			}
+		}
+	}
+}
