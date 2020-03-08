@@ -6,7 +6,7 @@ using namespace std;
 void from_file(string*, ifstream&, ifstream&, int, int);  //считывание из файла
 void fill(string*, string*, long int*, int); //заполнение массивов считанными данными
 void sort(string*, long int*, int); //сортировка по убыванию
-
+void output(string*, long int*, int);//вывод в файл
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
 	long int* marks = new long int[n];
 	fill(s, name, marks, n);
 	sort(name, marks, n);
-	
+	output(name, marks, 10);
 	}
 	else cout << "Файл не открыт";
 	
@@ -78,4 +78,14 @@ void sort(string* name, long int* marks, int n)
 			}
 		}
 	}
+}
+
+void output(string* name, long int* marks, int n)
+{
+	ofstream file("results.csv");
+	for (int i = 0; i < n; i++)
+	{
+		file << name[i] << ',' << marks[i] << endl;
+	}
+	file.close();
 }
