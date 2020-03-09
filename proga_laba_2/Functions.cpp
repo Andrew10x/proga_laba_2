@@ -20,7 +20,10 @@ int find_file(vector<string>& s)
 
 	hfind = FindFirstFileA(b.c_str(), &findData);
 	int n0 = 0;
-	if (hfind == INVALID_HANDLE_VALUE) cout << "Ошибка!" << endl;
+	if (hfind == INVALID_HANDLE_VALUE)
+	{
+		cout << "Ошибка!" << endl; exit(1);
+	}
 	else
 	{
 		do
@@ -88,7 +91,6 @@ void output(string* name, long int* marks, int n)
 	cout << "Введите путь для сохранения результата: ";
 	cin >> p;
 	p += "\\results.csv";
-	cout << p;
 	ofstream file(p);
 	for (int i = 0; i < n; i++)
 	{
