@@ -11,5 +11,7 @@ int main()
 	fill(s, name, marks, n);
 	sort(name, marks, n);
 	output(name, marks, 10);
+	delete [] name; delete [] marks; 
+	delete [] t;
 }
 
